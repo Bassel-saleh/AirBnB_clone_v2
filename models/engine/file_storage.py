@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This is the file storage class for AirBnB"""
+"""This is the file storage class for AirBnB"""
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -12,7 +12,7 @@ import shlex
 
 
 class FileStorage:
-    """ This class serializes instances to a JSON file and
+    """This class serializes instances to a JSON file and
     deserializes JSON file to instances
     Attributes:
         __file_path: path to the JSON file
@@ -39,7 +39,7 @@ class FileStorage:
             return self.__objects
 
     def new(self, obj):
-        """ sets __object to given obj
+        """sets __object to given obj
         Args:
             obj: given object
         """
@@ -48,7 +48,7 @@ class FileStorage:
             self.__objects[key] = obj
 
     def save(self):
-        """ serialize the file path to JSON file path
+        """serialize the file path to JSON file path
         """
         my_dict = {}
         for key, value in self.__objects.items():
@@ -57,7 +57,7 @@ class FileStorage:
             json.dump(my_dict, f)
 
     def reload(self):
-        """ serialize the file path to JSON file path
+        """serialize the file path to JSON file path
         """
         try:
             with open(self.__file_path, 'r', encoding="UTF-8") as f:

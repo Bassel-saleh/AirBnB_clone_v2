@@ -14,7 +14,7 @@ from models.amenity import Amenity
 
 
 class DBStorage:
-    """ create tables in environmental """
+    """ create tables in environmental"""
     __engine = None
     __session = None
 
@@ -33,7 +33,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """ returns a dictionary
+        """returns a dictionary
         Return:
             returns a dictionary of __object
         """
@@ -55,7 +55,7 @@ class DBStorage:
         return (dic)
 
     def new(self, obj):
-        """ add a new element in the table
+        """add a new element in the table
         """
         self.__session.add(obj)
 
@@ -65,13 +65,13 @@ class DBStorage:
         self.__session.commit()
 
     def delete(self, obj=None):
-        """ delete an element in the table
+        """delete an element in the table
         """
         if obj:
             self.session.delete(obj)
 
     def reload(self):
-        """ configuration
+        """configuration
         """
         Base.metadata.create_all(self.__engine)
         sec = sessionmaker(bind=self.__engine, expire_on_commit=False)
