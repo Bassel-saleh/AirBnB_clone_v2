@@ -14,7 +14,7 @@ from models.amenity import Amenity
 
 
 class DBStorage:
-    """ create tables in environmental """
+    """ create tables in environmental"""
     __engine = None
     __session = None
 
@@ -33,7 +33,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """ returns a dictionary
+        """returns a dictionary
         Return:
             returns a dictionary of __object
         """

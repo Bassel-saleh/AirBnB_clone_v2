@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """ create an object of any class """
+        """ Create an object of any class"""
         try:
             if not args:
                 raise SyntaxError()
@@ -135,12 +135,12 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
 
     def help_create(self):
-        """ help information for the create method """
+        """ Help information for the create method """
         print("Creates a class of any type")
         print("[Usage]: create <className>\n")
 
     def do_show(self, args):
-        """ method to show an individual object """
+        """ Method to show an individual object """
         new = args.partition(" ")
         c_name = new[0]
         c_id = new[2]
@@ -168,12 +168,12 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def help_show(self):
-        """ help information for the show command """
+        """ Help information for the show command """
         print("Shows an individual instance of a class")
         print("[Usage]: show <className> <objectId>\n")
 
     def do_destroy(self, args):
-        """ destroys a specified object """
+        """ Destroys a specified object """
         new = args.partition(" ")
         c_name = new[0]
         c_id = new[2]
@@ -201,12 +201,12 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def help_destroy(self):
-        """ help information for the destroy command """
+        """ Help information for the destroy command """
         print("Destroys an individual instance of a class")
         print("[Usage]: destroy <className> <objectId>\n")
 
     def do_all(self, args):
-        """ shows all objects, or all objects of a class"""
+        """ Shows all objects, or all objects of a class"""
         print_list = []
 
         if args:
@@ -222,12 +222,12 @@ class HBNBCommand(cmd.Cmd):
         print(print_list)
 
     def help_all(self):
-        """ help information for the all command """
+        """ Help information for the all command """
         print("Shows all objects, or all of a class")
         print("[Usage]: all <className>\n")
 
     def do_count(self, args):
-        """ count current number of class instances """
+        """Count current number of class instances"""
         count = 0
         for k, v in storage._FileStorage__objects.items():
             if args == k.split('.')[0]:
@@ -322,7 +322,7 @@ class HBNBCommand(cmd.Cmd):
         new_dict.save()  # save updates to file
 
     def help_update(self):
-        """ help information for the update class """
+        """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
 

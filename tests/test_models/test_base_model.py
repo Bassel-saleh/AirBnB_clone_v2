@@ -59,7 +59,7 @@ class test_basemodel(unittest.TestCase):
             new = BaseModel(**copy)
 
     def test_save(self):
-        """ testing save """
+        """ Testing save """
         i = self.value()
         i.save()
         key = self.name + "." + i.id
@@ -111,7 +111,7 @@ class test_basemodel(unittest.TestCase):
 
     def test_uuid(self):
         """
-        testin UUID
+        Testin UUID
         """
         instance1 = BaseModel()
         instance2 = BaseModel()
@@ -127,7 +127,7 @@ class test_basemodel(unittest.TestCase):
         self.assertNotEqual(instance2.id, instance3.id)
 
     def test_str_method(self):
-        """ testing returns STR method """
+        """Testing returns STR method"""
         instance6 = BaseModel()
         string_output = "[BaseModel] ({}) {}".format(instance6.id,
                                                      instance6.__dict__)
@@ -136,8 +136,7 @@ class test_basemodel(unittest.TestCase):
 
 class TestCodeFormat(unittest.TestCase):
     """
-    a class to test pep8 on base_model file
-    """
+    A class to test pep8 on base_model file"""
     def test_pycodestyle(self):
         """
         Test pep8 format
@@ -149,10 +148,11 @@ class TestCodeFormat(unittest.TestCase):
 
 
 class Test_docstrings(unittest.TestCase):
-    """ test docstrings """
+    """Test docstrings"""
     @classmethod
     def setup_class(self):
-        """ inspect.getmembers(object, [predicate])
+        """
+        inspect.getmembers(object, [predicate])
         Return all the members of an object in a list of (name, value)
         pairs sorted by name
         only members for which the predicate returns a true value are included
@@ -161,35 +161,35 @@ class Test_docstrings(unittest.TestCase):
 
 
 class TestBaseModel(unittest.TestCase):
-    """ this will test the base model class x """
+    """this will test the base model class x"""
 
     @classmethod
     def setUpClass(cls):
-        """ setup for the test """
+        """setup for the test"""
         cls.base = BaseModel()
         cls.base.name = "Kev"
         cls.base.num = 20
 
     @classmethod
     def teardown(cls):
-        """ at the end of the test this will tear it down """
+        """at the end of the test this will tear it down"""
         del cls.base
 
     def tearDown(self):
-        """ teardown """
+        """teardown"""
         try:
             os.remove("file.json")
         except Exception:
             pass
 
     def test_pep8_BaseModel(self):
-        """ testing for pep8 """
+        """Testing for pep8"""
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/base_model.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_checking_for_docstring_BaseModel(self):
-        """ checking for docstrings """
+        """checking for docstrings"""
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.__init__.__doc__)
         self.assertIsNotNone(BaseModel.__str__.__doc__)
@@ -197,22 +197,22 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
 
     def test_method_BaseModel(self):
-        """ chekcing if Basemodel have methods """
+        """chekcing if Basemodel have methods"""
         self.assertTrue(hasattr(BaseModel, "__init__"))
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
 
     def test_init_BaseModel(self):
-        """ test if the base is an type BaseModel """
+        """test if the base is an type BaseModel"""
         self.assertTrue(isinstance(self.base, BaseModel))
 
     def test_save_BaesModel(self):
-        """ test if the save works """
+        """test if the save works"""
         self.base.save()
         self.assertNotEqual(self.base.created_at, self.base.updated_at)
 
     def test_to_dict_BaseModel(self):
-        """ test if dictionary works """
+        """test if dictionary works"""
         base_dict = self.base.to_dict()
         self.assertEqual(self.base.__class__.__name__, 'BaseModel')
         self.assertIsInstance(base_dict['created_at'], str)
